@@ -90,4 +90,24 @@ router.post('/adduser', function(req, res) {
   });
 });
 
+<<<<<<< HEAD
+=======
+
+/* POST New Form Page.  */
+router.get('/newform', function(req, res) {
+  res.render('newform', { title: 'Create a New Form' });
+});
+
+/* GET New Form Page. */
+router.get('/formsumbit', function(req, res) {
+  var db = req.db;
+  var collection = db.get('newform');
+  collection.find({},{},function(e,docs){
+    res.render('formlist', {
+      "formlist" : docs
+    });
+  });
+});
+
+>>>>>>> 4d7b0ed34256e86ebbac2f1181afac75aabc4906
 module.exports = router;
