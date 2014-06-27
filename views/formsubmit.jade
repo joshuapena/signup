@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href='/stylesheets/style.css')
+    script(src='javascripts/angular.min.js')
+    script(src-'javascripts/adduser.js')
+  body
+    h1.
+      Form List
+    ul
+      each job, i in formcollection
+        li
+          a hi
+        li
+          p= job.requireNumber 
+        li
+          p= job.description

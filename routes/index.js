@@ -3,8 +3,20 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Create a New Form'});
 });
+
+/* GET New Form Page. */
+router.get('/formsubmit', function(req, res) {
+  var db = req.db;
+  var collection = db.get('formcollection');
+  collection.find({},{},function(e,docs) {
+    res.render('formsubmit', {
+      "formcollection" : docs
+    });
+  });
+});
+
 
 /* GET Hello World page. */
 router.get('/helloworld', function (req, res) {
@@ -18,7 +30,7 @@ router.get('/userlist', function(req, res) {
   collection.find({},{},function(e,docs) {
     res.render('userlist', {
       "userlist" : docs
-      });
+     });
   });
 });
 
@@ -47,22 +59,6 @@ router.post('/adduser', function(req, res) {
       res.location("userlist");
       res.redirect("userlist");
     }
-  });
-});
-
-/* POST New Form Page.  */
-router.get('/newform', function(req, res) {
-  res.render('newform', { title: 'Create a New Form' });
-});
-
-/* GET New Form Page. */
-router.get('/formsumbit', function(req, res) {
-  var db = req.db;
-  var collection = db.get('newform');
-  collection.find({},{},function(e,docs){
-    res.render('formlist', {
-      "formlist" : docs
-    });
   });
 });
 
