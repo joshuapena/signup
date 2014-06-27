@@ -16,7 +16,10 @@ router.get('/formsubmit', function(req, res) {
     });
   });
 });
-
+/* POST New Form Page.  */
+router.get('/newform', function(req, res) {
+  res.render('newform', { title: 'Create a New Form' });
+});
 
 /* GET Hello World page. */
 router.get('/helloworld', function (req, res) {
@@ -37,6 +40,31 @@ router.get('/userlist', function(req, res) {
 /* GET New User page. */
 router.get('/newuser', function(req, res) {
   res.render('newuser', { title: 'Add New User' });
+});
+
+/* GET Form Preview page */
+router.get('/previewform', function(req, res) {
+  res.render('previewform', { title: 'Form Preview' });
+});
+
+/* POST to Add Form */
+router.post('/addform', function(req, res) {
+  var db = req.db;
+  var formList = req.jobs;
+  
+  var collection = db.get('formcollection');
+  
+  collection.insert({
+    "jobList" : formList,
+  }, function (err, doc) {
+    if (err) {
+      res.send("There was a problem.")
+    }
+    else {
+      res.location("previewform")
+      res.redirect("previewform")
+    }
+  });
 });
 
 /* POST to Add User Service */
