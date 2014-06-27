@@ -6,5 +6,6 @@ angular.module('signup', [])
     $scope.addJob = function() {
       $scope.jobs.push($scope.newJob)
       $scope.newJob = {};
-    };
+  };
+
   });

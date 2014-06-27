@@ -6,14 +6,16 @@ html(ng-app="signup")
     script(src='javascripts/angular.min.js')
     script(src='javascripts/newform.js')
   body(ng-controller="formController")
-    h1= title
-    form#formAddJob(ng-submit="addJob(form)", name="addjob")
-      input#inputJobName(ng-model="newJob.name",type="text",placeholder="Job Name", name="jobtitle")
-      input#inputNumber(ng-model="newJob.numRequired",type="text", placeholder="Max Volenteers", name="jobnumber")
-      input#inputdescription(ng-model="newJob.description",type="text", placeholder="Job Description", name="jobdescription")
+    h1= title 
+    form(name="addform", method="post", action="/addform")
+      button#btnSubmit(type="submit") Add Form
+    form#formAddJob(ng-submit="addJob(form)"  name="addjob()")
+      input#inputJobName(ng-model="newJob.name" type="text" placeholder="Job Name" required)
+      input#inputNumber(ng-model="newJob.numRequired" type="number"  placeholder="Max Volunteers" required)
+      input#inputDescription(ng-model="newJob.description" type="text"  placeholder="Job Description" required)
       button#btnSubmit(type="submit") Add Job
   
     div(ng-repeat="job in jobs")
-        p {{job.name}}
-        p {{job.numRequired}}
-        p {{job.description}}
+      p Job Name: {{job.name}}
+      p Number Needed: {{job.numRequired}}
+      p Description: {{job.description}}
