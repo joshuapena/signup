@@ -1,18 +1,10 @@
-(function() {
-  var app = angular.module('signup', []);
+angular.module('signup', [])
+  .controller('formController', function($scope) {
+    $scope.jobs = [];
+    $scope.newJob = {};
 
-  app.controller('jobList', function() {
-    this.jobs = [
-    ];
-  });
-
-  app.controller('jobController', function() {
-    this.newJob = {};
-
-    this.addJob = function(form) {
-      form.jobs.push(this.newJob);
-      this.newJob = {};
+    $scope.addJob = function() {
+      $scope.jobs.push($scope.newJob)
+      $scope.newJob = {};
     };
   });
-
-})();

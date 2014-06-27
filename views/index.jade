@@ -1,5 +1,19 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html(ng-app="signup")
+  head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='javascripts/angular.min.js')
+    script(src='javascripts/newform.js')
+  body(ng-controller="formController")
+    h1 Add A Job
+    form#formAddJob(ng-submit="addJob(form)", name="addjob")
+      input#inputJobName(ng-model="newJob.name",type="text",placeholder="Job Name", name="jobtitle")
+      input#inputNumber(ng-model="newJob.numRequired",type="text", placeholder="Max Volenteers", name="jobnumber")
+      input#inputdescription(ng-model="newJob.description",type="text", placeholder="Job Description", name="jobdescription")
+      button#btnSubmit(type="submit") Add Job
+  
+    div(ng-repeat="job in jobs")
+        hr
+        p Job Name: {{job.name}}
+        p Number Required: {{job.numRequired}}
+        p Job Description: {{job.description}}
