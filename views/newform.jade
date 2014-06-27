@@ -1,19 +1,19 @@
 doctype html
 html(ng-app="signup")
   head
-    title= title
+    title Add Job
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='javascripts/angular.min.js')
     script(src='javascripts/newform.js')
-  body(ng-controller="jobList as form")
+  body(ng-controller="formController")
     h1= title
-    form#formAddJob(ng-controller="jobController as jobCtrl",ng-submit="jobCtrl.addJob(form)",name="addjob")
-      input#inputJobName(ng-model="jobCtrl.newJob.name",type="text",placeholder="Job Name", name="jobtitle")
-      input#inputNumber(ng-model="jobCtrl.newJob.numRequired",type="text", placeholder="Max Volenteers", name="jobnumber")
-      input#inputdescription(ng-model="jobCtrl.newJob.description",type="text", placeholder="Job Description", name="jobdescription")
+    form#formAddJob(ng-submit="addJob(form)", name="addjob")
+      input#inputJobName(ng-model="newJob.name",type="text",placeholder="Job Name", name="jobtitle")
+      input#inputNumber(ng-model="newJob.numRequired",type="text", placeholder="Max Volenteers", name="jobnumber")
+      input#inputdescription(ng-model="newJob.description",type="text", placeholder="Job Description", name="jobdescription")
       button#btnSubmit(type="submit") Add Job
   
-    div(ng-repeat="job in form.jobs")
+    div(ng-repeat="job in jobs")
         p {{job.name}}
         p {{job.numRequired}}
         p {{job.description}}
