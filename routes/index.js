@@ -52,7 +52,6 @@ router.get('/previewform', function(req, res) {
 router.post('/addform', function(req, res) {
   var db = req.db;
   var formList = req.jobs;
-  
   var collection = db.get('formcollection');
   
   collection.insert({
