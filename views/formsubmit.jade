@@ -9,11 +9,15 @@ html
     h1.
       Form List
     ul
-      each job, i in formcollection
-        li
-          p= job.name
-        li
-          p= job.requireNumber 
-        li
-          p= job.description
-        hr
+      each jobList, i in formcollection
+        each job, i in jobList
+          p empty object in jobList
+        //
+          li
+            p= job.name
+          li
+            p= job.requireNumber 
+          li
+            p= job.description
+          hr
+        
