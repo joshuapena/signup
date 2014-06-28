@@ -43,11 +43,6 @@ router.get('/newuser', function(req, res) {
   res.render('newuser', { title: 'Add New User' });
 });
 
-/* GET Form Preview page */
-router.get('/previewform', function(req, res) {
-  res.render('previewform', { title: 'Form Preview' });
-});
-
 /* POST to Add Form */
 router.post('/addform', function(req, res) {
   var db = req.db;
